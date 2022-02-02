@@ -1,0 +1,36 @@
+.cell {
+    border: 3px solid gray;
+    min-width: 30px;
+    min-height: 20px;
+    width:45px;
+    height:45px;
+    padding:1px;
+    margin:1px;
+    justify-content:center;
+    align-items: center;
+    display: inline-block;
+  }
+
+  #display {
+    border: 3px solid gray;
+    min-width: 30px;
+    min-height: 20px;
+    width:180px;
+    height:45px;
+    padding:1px;
+    margin:1px;
+    justify-content:center;
+    align-items: center;
+    display: inline-block;
+    
+  }
+
+  .operator {
+    background-color: lightblue;
+
+  }
+
+  .num {
+background: lightcoral;
+
+  }
