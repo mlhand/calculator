@@ -1,4 +1,6 @@
 let operator1 = null;
+let operator2 = null;
+//let answer = null;
 let string1 = '';
 let string2 = '';
 
@@ -149,18 +151,20 @@ function clickButtons() {
             if (buttons[i].classList.contains('operator')) {
                 //set operator variable as + - / or x 
                 //save string1 and begin string2
-                if (string2 !== '') {
+                if (operator1 !== null) {                                 //         if (string2 !== '') {
                     let abcd = buttons[i].innerHTML;
                     // //console.log(abcd);
-                    let operator1 = setOperator(abcd);
-                    console.log(operator1);
+                    let operator2 = setOperator(abcd);
+                    console.log(operator2);
                     num1 = Number(string1);
                     num2 = Number(string2);
     
-                    let answer = operate(operator1,num1,num2);
+                    let answer = operate(operator2,num1,num2);
                     string1 = answer;
                     string2 = '';
-                    operator1 = ''
+                    num1 = null;
+                    num2 = null;
+                    operator1 = null;
                     console.log(answer)
                     document.getElementById('display').innerHTML = answer;
                 }
@@ -168,7 +172,22 @@ function clickButtons() {
                 let abcd = buttons[i].innerHTML;
                 //console.log(abcd);
                 operator1 = setOperator(abcd);
+                operator2 = null;
                 console.log(operator1);
+                if (string2 !== '') {
+                    num1 = Number(string1);
+                    num2 = Number(string2);
+    
+                    let answer = operate(operator1,num1,num2);
+                    num1 = null;
+                    num2 = null;
+                    string1 = answer;
+                    string2 = '';
+                    //operator2 = null;
+                    console.log(answer)
+                    document.getElementById('display').innerHTML = answer;
+
+                }
                 //updateDisplay();
                 }
             }
@@ -186,17 +205,27 @@ function clickButtons() {
                 //run operate function with operator, string1, string 2 (convert str2num first)
                 num1 = Number(string1);
                 num2 = Number(string2);
-
+                if (operator1 === null){
+                let answer = operate(operator2,num1,num2);
+                string1 = answer;
+                string2 = '';
+                console.log(answer)
+                document.getElementById('display').innerHTML = answer;
+            }
+            else {
                 let answer = operate(operator1,num1,num2);
                 string1 = answer;
                 string2 = '';
                 console.log(answer)
                 document.getElementById('display').innerHTML = answer;
+
+            }
+             
                 //updateDisplay();
             }
             else if (buttons[i].classList.contains('cellclear')) {
                 //run clear function
-                operator1 = null;
+                operator1 === null;
                 //num1 === null;
                 //num2 === null;
                 clearDisplay();
@@ -257,7 +286,18 @@ string1 = '';
 string2 = '';
 
 }
+function getEquals(op) {
+    num1 = Number(string1);
+    num2 = Number(string2);
 
+    let answer = operate(op,num1,num2);
+    string1 = answer;
+    string2 = '';
+    console.log(answer)
+    document.getElementById('display').innerHTML = answer;
+
+
+}
 
 //clear button
 generateCalculator();
